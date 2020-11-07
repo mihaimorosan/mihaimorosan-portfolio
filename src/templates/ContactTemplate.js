@@ -1,9 +1,16 @@
 import React from 'react';
+import Hero from '../components/Hero';
+import MyForm from '../components/MyForm';
+
 
 function ContactTemplate(props) {
 
     return(
-        <p>Yooooo you're at contact!</p>
+        <div>
+            <Hero title={props.title}/>
+
+            <MyForm />
+        </div>
     )
 
 }
