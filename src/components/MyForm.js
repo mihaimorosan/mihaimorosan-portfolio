@@ -1,9 +1,11 @@
 import React from 'react';
 
+import emailjs from 'emailjs-com';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 import Content from '../components/Content';
+import config from '../config.json';
 
 class MyForm extends React.Component {
 
@@ -34,6 +36,23 @@ class MyForm extends React.Component {
         this.setState({
             disabled: true
         });
+
+        emailjs.sendForm(config.EMAILJS_SERVICE_ID, config.EMAILJS_TEMPLATE_ID, event.target, config.EMAILJS_USER_ID)
+            .then((result) => {
+                console.log(result.text);
+                this.setState({
+                    disabled: false,
+                    emailSent: true,
+                });
+            }, (error) => {
+                console.log(error.text);
+                this.setState({
+                    disabled: false,
+                    emailSent: false,
+                }); 
+            });
+            
+        event.target.reset();
     }
 
     render() {
