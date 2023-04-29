@@ -8,7 +8,6 @@ function ContactTemplate(props) {
     return(
         <div>
             <Hero title={props.title}/>
-
             <MyForm />
         </div>
     )

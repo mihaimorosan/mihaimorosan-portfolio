@@ -47,3 +47,10 @@ code {
   color:#EE6352;
   padding: 10px 15px;
 }
+
+.foot{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}

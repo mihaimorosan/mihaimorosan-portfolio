@@ -5,7 +5,6 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 import Content from '../components/Content';
-import config from '../config.json';
 
 class MyForm extends React.Component {
 
@@ -37,7 +36,7 @@ class MyForm extends React.Component {
             disabled: true
         });
 
-        emailjs.sendForm(config.EMAILJS_SERVICE_ID, config.EMAILJS_TEMPLATE_ID, event.target, config.EMAILJS_USER_ID)
+        emailjs.sendForm('mihaimorosan.portfolio', 'my_default_template', event.target, 'aa4uqwtbGK4FjS_IQ')
             .then((result) => {
                 console.log(result.text);
                 this.setState({

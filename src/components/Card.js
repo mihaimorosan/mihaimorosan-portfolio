@@ -4,8 +4,8 @@ import CardInfo from '../components/CardInfo';
 
 function Card(props) {
     return(
-        <div className="d-inline-block m-card" onClick={(e) => props.click(props.item)}>
-            <img className="m-card-image" src={props.item.imgSrc} alt={props.item.title} />
+        <div className="d-inline-block m-card" onMouseEnter={() => props.hover(props.item)} onMouseLeave={() => props.hover(props.item)}>
+            <img className="m-card-image" src={props.item.imgSrc} alt={props.item.title} title={props.item.title} />
             { props.item.selected && <CardInfo title={props.item.title} subTitle={props.item.subTitle} link={props.item.link}/> }
         </div>
     );

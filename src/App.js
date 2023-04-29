@@ -1,9 +1,9 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
-  Link
+  Link,
+  Routes
 } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
@@ -22,7 +22,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: 'Mihai Morosan',
+      logo: '//MIHAI',
       headerLinks: [
         { title: 'Home', path: '/' },
         { title: 'About', path: '/about' },
@@ -48,23 +48,23 @@ class App extends React.Component {
           <Container className="p-0" fluid={true}>
 
             <Navbar className="border-bottom" bg="transparent" expand="lg">
-              <Navbar.Brand>
-                Mihai Morosan
-              </Navbar.Brand>
-              <Navbar.Toggle className="border-0" aria-controls="navbar-toggle"/>
-              <Navbar.Collapse id="navbar-toggle">
-                <Nav className="ml-auto">
-                  <Link className="nav-link" to="/">Home</Link>
-                  <Link className="nav-link" to="/about">About</Link>
-                  <Link className="nav-link" to="/contact">Contact</Link>
-                </Nav>
-              </Navbar.Collapse>
+              <Container>
+                <Navbar.Brand>
+                  {this.state.logo}
+                </Navbar.Brand>
+                  <Nav className="ml-auto">
+                    <Link className="nav-link" to="/">Home</Link>
+                    <Link className="nav-link" to="/about">About</Link>
+                    <Link className="nav-link" to="/contact">Contact</Link>
+                  </Nav>
+              </Container>
             </Navbar>
 
-            <Route path="/" exact render={() => <HomeTemplate title={this.state.home.title} subTitle={this.state.home.subTitle} misc={this.state.home.misc} />} />
-            <Route path="/about" exact render={() => <AboutTemplate title={this.state.about.title}/>} />
-            <Route path="/contact" exact render={() => <ContactTemplate title={this.state.contact.title}/>} />
-
+            <Routes>
+              <Route path="/" exact element={<HomeTemplate title={this.state.home.title} subTitle={this.state.home.subTitle} misc={this.state.home.misc} />} />
+              <Route path="/about" exact element={<AboutTemplate title={this.state.about.title}/>} />
+              <Route path="/contact" exact element={<ContactTemplate title={this.state.contact.title}/>} />
+            </Routes>
             <Footer />
 
           </Container>
